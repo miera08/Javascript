@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        for(var i=0;i<3;i++){
+            //1초 뒤에 실행 i 라는거 출력예약 ->for 구문이 이미 돌아간뒤에 출력되기 때문에 i=3 인 상태로 출력
+            // 가장 편한 출력법은 var -> let, 전역변수를 지역변수로 만들어준다.
+            setTimeout(() => {
+               alert("실행"+i) ;
+            }, 1000);
+        }
+
+        //어려운 방법
+        function doA(i){
+            setTimeout(() => {
+                alert("실행"+i)
+            }, 1000);
+        }
+        for(var i=0;i<3;i++){
+            doA(i);
+        }
+
+        //더 어려운건지 그냥 다른방법인지 모르는거
+        for(var i=0;i<3;i++){
+            ((i)=>{
+                setTimeout(() => {
+                    alert(i)
+                }, 1000);
+            })(i);
+        }
+
+        //익명함수
+        (function(a){
+            alert("자기자신 익명함수 호출"+a);
+        })(100);
+        // setTimeout(function() {
+            
+        // }, timeout);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
